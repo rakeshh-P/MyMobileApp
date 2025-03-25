@@ -1,0 +1,295 @@
+.auth-container {
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    margin: 0;
+    padding: 16px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.auth-form {
+    width: min(90%, 400px);
+    background: #ffffff;
+    padding: clamp(1.5rem, 5vw, 2.5rem);
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    animation: slideUp 0.4s ease-out;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: clamp(1.5rem, 4vw, 2rem);
+}
+
+.auth-header h2 {
+    color: #2c3e50;
+    font-size: clamp(1.5rem, 4vw, 1.8rem);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.subtitle {
+    color: #7f8c8d;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    margin: 0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    width: 100%;
+}
+
+.input-container {
+    position: relative;
+    margin-bottom: clamp(1rem, 3vw, 1.25rem);
+    width: 100%;
+}
+
+.input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #7f8c8d;
+    font-size: clamp(1.1rem, 3vw, 1.2rem);
+    z-index: 1;
+}
+
+.auth-input {
+    width: 100% !important;
+    margin: 0 !important;
+    --padding-start: 2.5rem !important;
+    --padding-end: 1rem !important;
+    --padding-top: clamp(0.75rem, 2.5vw, 1rem) !important;
+    --padding-bottom: clamp(0.75rem, 2.5vw, 1rem) !important;
+    --background: #f8f9fa !important;
+    --color: #2c3e50 !important;
+    border-radius: 10px !important;
+    font-size: clamp(0.9rem, 2.5vw, 1rem) !important;
+    transition: all 0.3s ease !important;
+}
+
+.auth-input.ion-valid {
+    --background: #f0fff4 !important;
+    --border-color: #48bb78 !important;
+}
+
+.auth-input.ion-invalid {
+    --background: #fff5f5 !important;
+    --border-color: #e53e3e !important;
+}
+
+.error-message {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    color: #e74c3c;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.password-requirements {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: clamp(1rem, 3vw, 1.25rem);
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.password-requirements h3 {
+    color: #2c3e50;
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    margin: 0 0 0.75rem 0;
+    font-weight: 600;
+}
+
+.password-requirements ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.password-requirements li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #7f8c8d;
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.password-requirements li:last-child {
+    margin-bottom: 0;
+}
+
+.password-requirements li.met {
+    color: #27ae60;
+    transform: translateX(4px);
+}
+
+.password-requirements li ion-icon {
+    font-size: 1.1em;
+    min-width: 1.1em;
+    transition: all 0.3s ease;
+}
+
+.password-requirements li.met ion-icon {
+    color: #27ae60;
+    transform: scale(1.1);
+}
+
+.password-requirements li:not(.met) ion-icon {
+    color: #e74c3c;
+}
+
+.login-button {
+    margin-top: 1rem;
+    --background: #3498db;
+    --background-hover: #2980b9;
+    --border-radius: 10px;
+    --padding-top: clamp(0.75rem, 2.5vw, 1rem);
+    --padding-bottom: clamp(0.75rem, 2.5vw, 1rem);
+    font-weight: 600;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    text-transform: none;
+    width: 100%;
+}
+
+.login-button:disabled {
+    --background: #bdc3c7;
+    opacity: 0.7;
+}
+
+.success-message {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media queries for better responsiveness */
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 12px;
+    }
+    
+    .auth-form {
+        width: 95%;
+    }
+    
+    .auth-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .subtitle {
+        font-size: 0.9rem;
+    }
+    
+    .auth-input {
+        font-size: 0.9rem !important;
+    }
+    
+    .password-requirements {
+        padding: 0.75rem;
+    }
+    
+    .password-requirements li {
+        font-size: 0.8rem;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .auth-container {
+        background: linear-gradient(135deg, #2d3436 0%, #2c3e50 100%);
+    }
+    
+    .auth-form {
+        background: #1a202c;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .auth-header h2 {
+        color: #e2e8f0;
+    }
+    
+    .subtitle {
+        color: #a0aec0;
+    }
+    
+    .auth-input {
+        --background: #2d3748 !important;
+        --color: #e2e8f0 !important;
+        --placeholder-color: #a0aec0 !important;
+    }
+    
+    .auth-input.ion-valid {
+        --background: #1c4532 !important;
+        --border-color: #48bb78 !important;
+    }
+    
+    .auth-input.ion-invalid {
+        --background: #4a2828 !important;
+        --border-color: #e53e3e !important;
+    }
+    
+    .password-requirements {
+        background-color: #2d3748;
+        border-color: #4a5568;
+    }
+    
+    .password-requirements h3 {
+        color: #e2e8f0;
+    }
+    
+    .password-requirements li {
+        color: #a0aec0;
+    }
+    
+    .password-requirements li.met {
+        color: #48bb78;
+    }
+    
+    .success-message {
+        background-color: rgba(16, 185, 129, 0.1);
+        color: #34d399;
+    }
+}
+  

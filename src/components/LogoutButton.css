@@ -1,0 +1,27 @@
+.logout-button {
+    --padding-start: 0.5rem;
+    --padding-end: 0.5rem;
+    --color: #64748b;
+    font-size: 1.25rem;
+}
+
+.logout-button:hover {
+    --color: #e11d48;
+}
+
+/* Alert Styles */
+.logout-alert.alert-wrapper {
+    --min-width: 300px;
+}
+
+.logout-alert .alert-button.danger {
+    color: #e11d48;
+}
+
+.logout-alert .alert-button.secondary {
+    color: #64748b;
+}
+
+.logout-alert .alert-message {
+    color: #4b5563;
+} 

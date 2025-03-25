@@ -1,7 +1,11 @@
+import React, { useEffect } from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import {
+  IonApp,
+  IonRouterOutlet,
+  setupIonicReact
+} from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -19,35 +23,54 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
-
-/* import '@ionic/react/css/palettes/dark.always.css'; */
-/* import '@ionic/react/css/palettes/dark.class.css'; */
-import '@ionic/react/css/palettes/dark.system.css';
-
 /* Theme variables */
 import './theme/variables.css';
+import './global.css';
 
-setupIonicReact();
+/* Pages */
+import Home from './pages/Home';
+import Auth from './pages/Auth';
+import MealDetails from './pages/MealDetails';
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+setupIonicReact({
+  mode: 'md'
+});
+
+const App: React.FC = () => {
+  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+
+  useEffect(() => {
+    // Force light mode
+    document.body.classList.remove('dark');
+    // Add light mode class
+    document.body.classList.add('light');
+    // Set color scheme meta tag
+    const meta = document.createElement('meta');
+    meta.name = 'color-scheme';
+    meta.content = 'light';
+    document.head.appendChild(meta);
+  }, []);
+
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route exact path="/auth">
+            <Auth />
+          </Route>
+          <Route exact path="/home">
+            {isAuthenticated ? <Home /> : <Redirect to="/auth" />}
+          </Route>
+          <Route exact path="/">
+            <Redirect to="/auth" />
+          </Route>
+          <Route path="/meal/:id">
+            {isAuthenticated ? <MealDetails /> : <Redirect to="/auth" />}
+          </Route>
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;
