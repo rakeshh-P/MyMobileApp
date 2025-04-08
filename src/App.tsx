@@ -39,17 +39,17 @@ setupIonicReact({
 const App: React.FC = () => {
   const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
 
-  useEffect(() => {
-    // Force light mode
-    document.body.classList.remove('dark');
-    // Add light mode class
-    document.body.classList.add('light');
-    // Set color scheme meta tag
-    const meta = document.createElement('meta');
-    meta.name = 'color-scheme';
-    meta.content = 'light';
-    document.head.appendChild(meta);
-  }, []);
+  // useEffect(() => {
+  //   // Force light mode
+  //   document.body.classList.remove('dark');
+  //   // Add light mode class
+  //   document.body.classList.add('light');
+  //   // Set color scheme meta tag
+  //   const meta = document.createElement('meta');
+  //   meta.name = 'color-scheme';
+  //   meta.content = 'light';
+  //   document.head.appendChild(meta);
+  // }, []);
 
   return (
     <IonApp>
